@@ -24,7 +24,9 @@ import {
   MenuItem,
   MenuItemGroup,
   Tabs,
-  TabPane
+  TabPane,
+  Table,
+  TableColumn
 } from 'element-ui'
 Button.install(Vue)
 Row.install(Vue)
@@ -38,6 +40,8 @@ TabPane.install(Vue)
 Select.install(Vue)
 Option.install(Vue)
 OptionGroup.install(Vue)
+Table.install(Vue)
+TableColumn.install(Vue)
 // Message组件引入
 import Message from 'element-ui/lib/message'
 Vue.prototype.$message = Message
