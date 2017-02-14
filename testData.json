@@ -1,0 +1,135 @@
+{
+  "menuData": [
+    {
+      "name":"商品管理",
+      "itemMenu": [
+        {
+          "name": "商品列表",
+          "page": "goodList"
+        },
+        {
+          "name": "库存管理",
+          "page": "kucunManage"
+        },
+        {
+          "name": "添加商品",
+          "page": "addGood"
+        },
+        {
+          "name": "商品分类",
+          "page": "goodCate"
+        },
+        {
+          "name": "商品品牌",
+          "page": "goodBrand"
+        },
+        {
+          "name": "评价管理",
+          "page": "commentManage"
+        },
+        {
+          "name": "商品活动",
+          "page": "goodActivity"
+        }
+      ]
+    },
+    {
+      "name": "退款管理",
+      "itemMenu": [
+        {
+          "name": "退款列表",
+          "page": "returnList"
+        }
+      ]
+    }
+  ],
+  "goodListData": {
+    "initFormData": {
+      "cateData": [{
+        "value": "0",
+        "label": "男鞋"
+      }, {
+        "value": "1",
+        "label": "女鞋"
+      }, {
+        "value": "2",
+        "label": "包配"
+      }, {
+        "value": "3",
+        "label": "童鞋"
+      }, {
+        "value": "4",
+        "label": "男装"
+      }],
+      "brandData": [{
+        "value": "0",
+        "label": "阿迪达斯"
+      },{
+        "value": "1",
+        "label": "耐克"
+      },{
+        "value": "2",
+        "label": "三叶草"
+      },{
+        "value": "3",
+        "label": "匡威"
+      },{
+        "value": "4",
+        "label": "安踏"
+      }],
+      "sexData": [{
+        "value": "0",
+        "label": "中"
+      },{
+        "value": "1",
+        "label": "男"
+      },{
+        "value": "2",
+        "label": "女"
+      }],
+      "templateData": [{
+        "value": "0",
+        "label": "默认模板"
+      },{
+        "value": "1",
+        "label": "包邮模板"
+      },{
+        "value": "2",
+        "label": "江浙沪包邮，其他加10"
+      }],
+      "introData": [{
+        "value": "0",
+        "label": "首页"
+      },{
+        "value": "1",
+        "label": "热卖"
+      },{
+        "value": "2",
+        "label": "新品"
+      }],
+      "listingData": [{
+        "value": "0",
+        "label": "上架"
+      },{
+        "value": "1",
+        "label": "下架"
+      }],
+      "adminData": [{
+        "value": "0",
+        "label": "admin"
+      },{
+        "value": "1",
+        "label": "francis"
+      },{
+        "value": "2",
+        "label": "test"
+      },{
+        "value": "3",
+        "label": "guizhiquan"
+      },{
+        "value": "4",
+        "label": "haha"
+      }]
+    }
+  }
+}
