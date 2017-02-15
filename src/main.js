@@ -28,7 +28,10 @@ import {
   Table,
   TableColumn,
   Loading,
-  Pagination
+  Pagination,
+  Form,
+  FormItem,
+  Input
 } from 'element-ui'
 Button.install(Vue)
 Row.install(Vue)
@@ -46,6 +49,9 @@ Table.install(Vue)
 TableColumn.install(Vue)
 Pagination.install(Vue)
 Loading.install(Vue)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
 // Message组件引入
 import Message from 'element-ui/lib/message'
 Vue.prototype.$message = Message
