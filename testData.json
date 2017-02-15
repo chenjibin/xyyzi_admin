@@ -44,6 +44,97 @@
     }
   ],
   "goodListData": {
+    "tableData": [{
+      "id": "6578",
+      "image": "http://img2.xyyzi.com/Upload/images/20170119/587f9caac4d2f.jpg?style=200x20",
+      "date": "2017-01-05 11:27:53",
+      "name": "王小虎",
+      "title": "Adidas/阿迪达斯NEO男鞋2016秋季新款透气低帮运动休闲鞋 AW5048 ",
+      "address": "上海市普陀区金沙江路 1518 弄",
+      "cate": "男鞋",
+      "brand": "阿迪达斯",
+      "sex": "男",
+      "price": "684",
+      "isListing":"0",
+      "first": "1",
+      "hot": "0",
+      "new": "0",
+      "recommend": "1",
+      "sepcPrice": "1",
+      "xianhuo": "1"
+    },{
+      "id": "6579",
+      "image": "http://img2.xyyzi.com/Upload/images/20170119/587f9caac4d2f.jpg?style=200x20",
+      "date": "2017-01-05 11:27:53",
+      "name": "王小虎",
+      "title": "Adidas/阿迪达斯NEO男鞋2016秋季新款透气低帮运动休闲鞋 AW5048 ",
+      "address": "上海市普陀区金沙江路 1518 弄",
+      "cate": "男鞋",
+      "brand": "阿迪达斯",
+      "sex": "男",
+      "price": "684",
+      "isListing":"0",
+      "first": "1",
+      "hot": "0",
+      "new": "0",
+      "recommend": "0",
+      "sepcPrice": "0",
+      "xianhuo": "0"
+    },{
+      "id": "6586",
+      "image": "http://img2.xyyzi.com/Upload/images/20170119/587f9caac4d2f.jpg?style=200x20",
+      "date": "2017-01-05 11:27:53",
+      "name": "王小虎",
+      "title": "Adidas/阿迪达斯NEO男鞋2016秋季新款透气低帮运动休闲鞋 AW5048 ",
+      "address": "上海市普陀区金沙江路 1518 弄",
+      "cate": "男鞋",
+      "brand": "阿迪达斯",
+      "sex": "男",
+      "price": "684",
+      "isListing":"1",
+      "first": "1",
+      "hot": "1",
+      "new": "0",
+      "recommend": "1",
+      "sepcPrice": "1",
+      "xianhuo": "1"
+    },{
+      "id": "6638",
+      "image": "http://img2.xyyzi.com/Upload/images/20170119/587f9caac4d2f.jpg?style=200x20",
+      "date": "2017-01-05 11:27:53",
+      "name": "王小虎",
+      "title": "Adidas/阿迪达斯NEO男鞋2016秋季新款透气低帮运动休闲鞋 AW5048 ",
+      "address": "上海市普陀区金沙江路 1518 弄",
+      "cate": "男鞋",
+      "brand": "阿迪达斯",
+      "sex": "男",
+      "price": "684",
+      "isListing":"1",
+      "first": "1",
+      "hot": "0",
+      "new": "0",
+      "recommend": "1",
+      "sepcPrice": "1",
+      "xianhuo": "1"
+    },{
+      "id": "6012",
+      "image": "http://img2.xyyzi.com/Upload/images/20170119/587f9caac4d2f.jpg?style=200x20",
+      "date": "2017-01-05 11:27:53",
+      "name": "王小虎",
+      "title": "Adidas/阿迪达斯NEO男鞋2016秋季新款透气低帮运动休闲鞋 AW5048 ",
+      "address": "上海市普陀区金沙江路 1518 弄",
+      "cate": "男鞋",
+      "brand": "阿迪达斯",
+      "sex": "男",
+      "price": "684",
+      "isListing":"0",
+      "first": "1",
+      "hot": "0",
+      "new": "0",
+      "recommend": "1",
+      "sepcPrice": "0",
+      "xianhuo": "0"
+    }],
     "initFormData": {
       "cateData": [{
         "value": "0",
@@ -106,6 +197,18 @@
       },{
         "value": "2",
         "label": "新品"
+      },{
+        "value": "3",
+        "label": "推荐"
+      },{
+        "value": "4",
+        "label": "热卖"
+      },{
+        "value": "5",
+        "label": "现货"
+      },{
+        "value": "6",
+        "label": "包邮"
       }],
       "listingData": [{
         "value": "0",
@@ -129,6 +232,49 @@
       },{
         "value": "4",
         "label": "haha"
+      }],
+      "allHandleData": [{
+        "value": "0",
+        "label": "上架"
+      },{
+        "value": "1",
+        "label": "下架"
+      },{
+        "value": "2",
+        "label": "首页"
+      },{
+        "value": "3",
+        "label": "取消首页"
+      },{
+        "value": "4",
+        "label": "热卖"
+      },{
+        "value": "5",
+        "label": "取消热卖"
+      },{
+        "value": "6",
+        "label": "新品"
+      },{
+        "value": "7",
+        "label": "取消新品"
+      },{
+        "value": "8",
+        "label": "推荐"
+      },{
+        "value": "9",
+        "label": "取消推荐"
+      },{
+        "value": "10",
+        "label": "特价"
+      },{
+        "value": "11",
+        "label": "取消特价"
+      },{
+        "value": "12",
+        "label": "现货"
+      },{
+        "value": "13",
+        "label": "取消现货"
       }]
     }
   }

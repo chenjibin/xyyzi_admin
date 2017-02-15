@@ -26,6 +26,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
+      title: '登录',
       component: Login
     },
     {
@@ -37,6 +38,7 @@ export default new Router({
         {
           path: 'home',
           name: 'home',
+          title: '首页',
           component: HomePage
         },
         {
@@ -47,6 +49,7 @@ export default new Router({
         {
           path: 'goodList',
           name: 'goodList',
+          title: '商品列表',
           component: GoodList
         },
         {

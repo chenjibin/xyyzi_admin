@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="good-list-page">
     <el-row>
       <el-col :span="24">
         <el-select v-model="sendData.cate_id" clearable placeholder="选择分类" name="cate_id" size="small" @change="selectChange">
@@ -53,28 +53,46 @@
         </el-select>
         <el-button type="primary" size="small" @click="submitSearch">查询</el-button>
       </el-col>
+      <el-col :span="24" class="tool-btn-wrapper">
+        <el-button type="primary" size="small" @click="addGood">添加商品</el-button>
+        <el-select v-model="allHandle" style="width:100px;" clearable placeholder="批量操作" name="allHandle" size="small">
+          <el-option
+            v-for="item in initFormData.allHandleData"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+      </el-col>
       <el-col :span="24" class="good-data">
         <el-table
+          v-loading="loading"
+          element-loading-text="拼命加载中"
           :data="tableData"
           stripe
-          style="width: 100%">
+          style="width: 100%;border-right:1px solid #dfe6ec;">
           <el-table-column
+            fixed
             type="selection"
             width="40">
           </el-table-column>
           <el-table-column
+            fixed
             prop="id"
-            label="ID"
-            width="60">
+            label="ID">
           </el-table-column>
           <el-table-column
+            fixed
             prop="image"
-            label="图片"
-            width="180">
+            label="图片">
+            <template scope="scope">
+              <img :src="scope.row.image" width="60" height="60">
+            </template>
           </el-table-column>
           <el-table-column
+            fixed
             prop="title"
-            label="标题">
+            label="标题"
+            width="300">
           </el-table-column>
           <el-table-column
             prop="admin"
@@ -82,7 +100,8 @@
           </el-table-column>
           <el-table-column
             prop="date"
-            label="编辑时间">
+            label="编辑时间"
+            width="180">
           </el-table-column>
           <el-table-column
             prop="cate"
@@ -90,7 +109,8 @@
           </el-table-column>
           <el-table-column
             prop="brand"
-            label="品牌">
+            label="品牌"
+            width="120">
           </el-table-column>
           <el-table-column
             prop="sex"
@@ -103,77 +123,140 @@
           <el-table-column
             prop="isListing"
             label="上架">
+            <template scope="scope">
+              <i class="el-icon-circle-check" :class="[+scope.row.isListing ? trueClass : falseClass]"></i>
+            </template>
           </el-table-column>
           <el-table-column
             prop="first"
             label="首页">
+            <template scope="scope">
+              <i class="el-icon-circle-check" :class="[+scope.row.first ? trueClass : falseClass]"></i>
+            </template>
           </el-table-column>
           <el-table-column
             prop="hot"
             label="热卖">
+            <template scope="scope">
+              <i class="el-icon-circle-check" :class="[+scope.row.hot ? trueClass : falseClass]"></i>
+            </template>
           </el-table-column>
           <el-table-column
             prop="new"
             label="新品">
+            <template scope="scope">
+              <i class="el-icon-circle-check" :class="[+scope.row.new ? trueClass : falseClass]"></i>
+            </template>
           </el-table-column>
           <el-table-column
             prop="recommend"
             label="推荐">
+            <template scope="scope">
+              <i class="el-icon-circle-check" :class="[+scope.row.recommend ? trueClass : falseClass]"></i>
+            </template>
           </el-table-column>
           <el-table-column
             prop="sepcPrice"
             label="特价">
+            <template scope="scope">
+              <i class="el-icon-circle-check" :class="[+scope.row.sepcPrice ? trueClass : falseClass]"></i>
+            </template>
           </el-table-column>
           <el-table-column
             prop="xianhuo"
             label="现货">
+            <template scope="scope">
+              <i class="el-icon-circle-check" :class="[+scope.row.xianhuo ? trueClass : falseClass]"></i>
+            </template>
           </el-table-column>
           <el-table-column
+            fixed="right"
             prop="address"
-            label="操作">
+            label="操作"
+            width="160">
             <template scope="scope">
               <el-button
                 size="small"
-                @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                @click="handleEdit(scope.row.id)">编辑</el-button>
               <el-button
                 size="small"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                @click="handleDelete(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
-
+      </el-col>
+      <el-col :span="24" class="pagination-wrapper">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="[10, 20, 30, 40]"
+          :page-size="pageSize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="800">
+        </el-pagination>
       </el-col>
     </el-row>
+    <transition name="fade">
+      <div v-if="modelShow" class="model-popup">
+
+      </div>
+    </transition>
   </div>
 </template>
 <style lang="less">
-  .good-data {
-    margin-top: 10px;
+  .good-list-page{
+    position: relative;
+    min-height: 100%;
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s
+    }
+    .fade-enter, .fade-leave-active {
+      opacity: 0
+    }
+    .good-data {
+      margin-top: 10px;
+    }
+    .model-popup {
+      position: absolute;
+      z-index: 99;
+      left:0;
+      width: 100%;
+      top:0;
+      bottom:0;
+      background-color: #fff;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+    .tool-btn-wrapper {
+      margin-top: 10px;
+    }
+    .pagination-wrapper {
+      margin-top: 10px;
+    }
+    [class*=" el-icon-"], [class^=el-icon-] {
+      font-size: 18px;
+      &.el-icon-circle-check {
+        color: #00ab00;
+      }
+      &.el-icon-circle-cross {
+        color: #dc0707;
+      }
   }
-
+  }
 </style>
 <script>
   export default{
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }],
+        pageSize: 10,
+        currentPage: 1,
+        modelShow: false,
+        trueClass: 'el-icon-circle-check',
+        falseClass: 'el-icon-circle-cross',
+        loading: false,
+        tableData: [],
         initFormData: {},
         sendData: {
           cate_id: '',
@@ -183,24 +266,47 @@
           intro_type: '',
           is_listing: '',
           admin_id: ''
-        }
+        },
+        allHandle: ''
       }
     },
     created() {
-      this.$http.get('/api/getGoodListData').then((res) => {
-        this.initFormData = res.data.data.initFormData
-      })
+      this.getGoodListData()
     },
     components: {},
     methods: {
+      addGood() {
+        this.modelShow = true
+      },
+      getGoodListData() {
+        this.loading = true
+        this.$http.get('/api/getGoodListData').then((res) => {
+          this.initFormData = res.data.data.initFormData
+          this.tableData = res.data.data.tableData
+          setTimeout(() => {
+            this.loading = false
+          }, 500)
+      })
+      },
       selectChange(a) {
         console.log(this.sendData.cate_id)
       },
       submitSearch() {
-        this.$http.post('/api/searchGoodListData', this.sendData).then((res) => {
-          console.log(res)
-        })
+        this.getGoodListData()
+//        this.$http.post('/api/searchGoodListData', this.sendData).then((res) => {
+//          console.log(res)
+//        })
         console.log(this.sendData)
+      },
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`)
+        this.pageSize = val
+        this.getGoodListData()
+      },
+      handleCurrentChange(val) {
+        this.currentPage = val
+        console.log(`当前页: ${val}`)
+        this.getGoodListData()
       }
     }
   }

@@ -47,6 +47,7 @@
       left: 0;
       top: 60px;
       bottom: 0;
+      min-width: 1200px;
       width: 100%;
       .left-area {
         height: 100%;

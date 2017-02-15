@@ -26,7 +26,9 @@ import {
   Tabs,
   TabPane,
   Table,
-  TableColumn
+  TableColumn,
+  Loading,
+  Pagination
 } from 'element-ui'
 Button.install(Vue)
 Row.install(Vue)
@@ -42,6 +44,8 @@ Option.install(Vue)
 OptionGroup.install(Vue)
 Table.install(Vue)
 TableColumn.install(Vue)
+Pagination.install(Vue)
+Loading.install(Vue)
 // Message组件引入
 import Message from 'element-ui/lib/message'
 Vue.prototype.$message = Message
@@ -49,15 +53,15 @@ Vue.prototype.$message = Message
 import Notification from 'element-ui/lib/notification'
 Vue.prototype.$notify = Notification
 
+Vue.prototype.$loading = Loading.service
 router.afterEach(route => {
   // console.log(route);
-  document.title = route.name
+  document.title = '幸运叶子后台管理系统'
 })
 
 // sync the router with the vuex store.
 // this registers `store.state.route`
 sync(store, router)
-
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
