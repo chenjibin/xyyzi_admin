@@ -31,7 +31,9 @@ import {
   Pagination,
   Form,
   FormItem,
-  Input
+  Input,
+  Checkbox,
+  CheckboxGroup
 } from 'element-ui'
 Button.install(Vue)
 Row.install(Vue)
@@ -52,6 +54,8 @@ Loading.install(Vue)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
 // Message组件引入
 import Message from 'element-ui/lib/message'
 Vue.prototype.$message = Message

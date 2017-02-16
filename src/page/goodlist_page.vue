@@ -62,6 +62,7 @@
             :value="item.value">
           </el-option>
         </el-select>
+        <el-button type="primary" size="small">批量</el-button>
       </el-col>
       <el-col :span="24" class="good-data">
         <el-table
@@ -199,8 +200,9 @@
       </el-col>
     </el-row>
     <transition name="fade">
-      <div v-if="modelShow" class="model-popup">
+      <el-row v-if="modelShow" class="model-popup">
         <el-form ref="form" :model="form" label-width="80px">
+          <el-col :span="8" class="add-left-area">
           <el-form-item label="标题">
             <el-input v-model="form.name" size="small"></el-input>
           </el-form-item>
@@ -217,9 +219,10 @@
             </el-select>
           </el-form-item>
           <el-form-item label="性别">
-            <el-select v-model="form.region" placeholder="请选择性别" size="small">
-              <el-option label="区域一" value="shanghai"></el-option>
-              <el-option label="区域二" value="beijing"></el-option>
+            <el-select v-model="form.sex" clearable placeholder="请选择性别" size="small">
+              <el-option label="中" value="0"></el-option>
+              <el-option label="男" value="1"></el-option>
+              <el-option label="女" value="2"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="快递模板">
@@ -228,9 +231,67 @@
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
           </el-form-item>
-
+          <el-form-item label="属性">
+            <el-checkbox-group v-model="form.type">
+              <el-checkbox label="上架" name="type"></el-checkbox>
+              <el-checkbox label="包邮" name="type"></el-checkbox>
+              <el-checkbox label="首页" name="type"></el-checkbox>
+              <el-checkbox label="热卖" name="type"></el-checkbox>
+              <el-checkbox label="新品" name="type"></el-checkbox>
+              <el-checkbox label="推荐" name="type"></el-checkbox>
+              <el-checkbox label="特价" name="type"></el-checkbox>
+              <el-checkbox label="现货" name="type"></el-checkbox>
+              <el-checkbox label="活动" name="type"></el-checkbox>
+              <el-checkbox label="双11" name="type"></el-checkbox>
+              <el-checkbox label="活动2" name="type"></el-checkbox>
+            </el-checkbox-group>
+          </el-form-item>
+          <el-form-item label="商品简介">
+            <el-input v-model="form.seoDesc" type="textarea"></el-input>
+          </el-form-item>
+          <el-form-item label="SEO标题">
+            <el-input v-model="form.seoTitle" size="small"></el-input>
+          </el-form-item>
+          <el-form-item label="SEO关键词">
+            <el-input v-model="form.seoKeyWord" size="small"></el-input>
+          </el-form-item>
+          <el-form-item label="SEO描述">
+            <el-input v-model="form.seoTalk" type="textarea"></el-input>
+          </el-form-item>
+          <el-form-item label="7天销量">
+            <el-input v-model="form.weekSale" size="small" style="width:120px;"></el-input>
+          </el-form-item>
+            <div class="title">商品详情</div>
+            <u-editor></u-editor>
+            </el-col>
+          <el-col :span="14" class="add-right-area">
+            <el-form-item label="规格类型">
+              <el-select v-model="form.guige" placeholder="请选择分类" size="small">
+                <el-option label="默认(无)" value="0"></el-option>
+                <el-option label="鞋" value="1"></el-option>
+                <el-option label="服" value="2"></el-option>
+                <el-option label="包" value="3"></el-option>
+                <el-option label="篮球" value="4"></el-option>
+                <el-option label="足球" value="5"></el-option>
+                <el-option label="童鞋" value="6"></el-option>
+                <el-option label="其他" value="7"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="商家编码">
+              <el-input v-model="form.name" placeholder="商家编码" size="small" style="width:193px;"></el-input>
+            </el-form-item>
+            <el-form-item label="销售价格">
+              <el-input v-model="form.name" placeholder="销售价格" size="small" style="width:193px;"></el-input>
+            </el-form-item>
+            <el-form-item label="市场价格">
+              <el-input v-model="form.name" placeholder="市场价格" size="small" style="width:193px;"></el-input>
+            </el-form-item>
+            <el-form-item label="库存数量">
+              <el-input v-model="form.name" placeholder="库存数量" size="small" style="width:193px;"></el-input>
+            </el-form-item>
+          </el-col>
         </el-form>
-      </div>
+      </el-row>
     </transition>
   </div>
 </template>
@@ -259,6 +320,20 @@
       overflow-y: scroll;
       .el-form-item {
         margin-bottom: 10px;
+        .el-checkbox+.el-checkbox {
+          margin: 0;
+        }
+      }
+      .add-left-area {
+        .title {
+          font-size: 14px;
+          color: #48576a;
+          text-indent:10px;
+          margin-bottom: 10px;
+        }
+      }
+      .add-right-area {
+        float: right;
       }
     }
     .tool-btn-wrapper {
@@ -279,7 +354,11 @@
   }
 </style>
 <script type="text/ecmascript-6">
+  import UEditor from 'components/UEditor'
   export default{
+    components: {
+      'u-editor': UEditor
+    },
     data() {
       return {
         pageSize: 10,
@@ -301,12 +380,19 @@
         },
         allHandle: '',
         form: {
+          guige: '0',
+          sex: '',
           name: '',
+          seoTitle: '',
+          seoDesc: '',
+          seoKeyWord: '',
+          seoTalk: '',
           region: '',
           date1: '',
           date2: '',
+          weekSale: '',
           delivery: false,
-          type: [],
+          type: ['上架', '包邮', '首页', '热卖'],
           resource: '',
           desc: ''
         }
@@ -315,7 +401,6 @@
     created() {
       this.getGoodListData()
     },
-    components: {},
     methods: {
       addGood() {
         this.modelShow = true
