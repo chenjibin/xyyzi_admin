@@ -125,49 +125,49 @@
             prop="isListing"
             label="上架">
             <template scope="scope">
-              <i class="el-icon-circle-check" :class="[+scope.row.isListing ? trueClass : falseClass]"></i>
+              <i :class="[+scope.row.isListing ? trueClass : falseClass]"></i>
             </template>
           </el-table-column>
           <el-table-column
             prop="first"
             label="首页">
             <template scope="scope">
-              <i class="el-icon-circle-check" :class="[+scope.row.first ? trueClass : falseClass]"></i>
+              <i :class="[+scope.row.first ? trueClass : falseClass]"></i>
             </template>
           </el-table-column>
           <el-table-column
             prop="hot"
             label="热卖">
             <template scope="scope">
-              <i class="el-icon-circle-check" :class="[+scope.row.hot ? trueClass : falseClass]"></i>
+              <i :class="[+scope.row.hot ? trueClass : falseClass]"></i>
             </template>
           </el-table-column>
           <el-table-column
             prop="new"
             label="新品">
             <template scope="scope">
-              <i class="el-icon-circle-check" :class="[+scope.row.new ? trueClass : falseClass]"></i>
+              <i :class="[+scope.row.new ? trueClass : falseClass]"></i>
             </template>
           </el-table-column>
           <el-table-column
             prop="recommend"
             label="推荐">
             <template scope="scope">
-              <i class="el-icon-circle-check" :class="[+scope.row.recommend ? trueClass : falseClass]"></i>
+              <i :class="[+scope.row.recommend ? trueClass : falseClass]"></i>
             </template>
           </el-table-column>
           <el-table-column
             prop="sepcPrice"
             label="特价">
             <template scope="scope">
-              <i class="el-icon-circle-check" :class="[+scope.row.sepcPrice ? trueClass : falseClass]"></i>
+              <i :class="[+scope.row.sepcPrice ? trueClass : falseClass]"></i>
             </template>
           </el-table-column>
           <el-table-column
             prop="xianhuo"
             label="现货">
             <template scope="scope">
-              <i class="el-icon-circle-check" :class="[+scope.row.xianhuo ? trueClass : falseClass]"></i>
+              <i :class="[+scope.row.xianhuo ? trueClass : falseClass]"></i>
             </template>
           </el-table-column>
           <el-table-column
@@ -192,10 +192,10 @@
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :current-page="currentPage"
-          :page-sizes="[10, 20, 30, 40]"
+          :page-sizes="[5, 10, 15, 20]"
           :page-size="pageSize"
           layout="total, sizes, prev, pager, next, jumper"
-          :total="800">
+          :total="totalCount">
         </el-pagination>
       </el-col>
     </el-row>
@@ -361,7 +361,8 @@
     },
     data() {
       return {
-        pageSize: 10,
+        totalCount: null,
+        pageSize: 5,
         currentPage: 1,
         modelShow: false,
         trueClass: 'el-icon-circle-check',
@@ -399,17 +400,24 @@
       }
     },
     created() {
-      this.getGoodListData()
+      let options = {
+        params: {
+          currentPage: this.currentPage,
+          pageSize: this.pageSize
+        }
+      }
+      this.getGoodListData(options)
     },
     methods: {
       addGood() {
         this.modelShow = true
       },
-      getGoodListData() {
+      getGoodListData(options) {
         this.loading = true
-        this.$http.get('/api/getGoodListData').then((res) => {
-          this.initFormData = res.data.data.initFormData
-          this.tableData = res.data.data.tableData
+        this.$http.get('/api/getGoodListData', options).then((res) => {
+          this.initFormData = res.data.initFormData
+          this.tableData = res.data.tableData
+          this.totalCount = +res.data.totalCount
           setTimeout(() => {
             this.loading = false
           }, 500)
@@ -428,12 +436,24 @@
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`)
         this.pageSize = val
-        this.getGoodListData()
+        let options = {
+          params: {
+            currentPage: this.currentPage,
+            pageSize: this.pageSize
+          }
+        }
+        this.getGoodListData(options)
       },
       handleCurrentChange(val) {
         this.currentPage = val
+        let options = {
+          params: {
+            currentPage: this.currentPage,
+            pageSize: this.pageSize
+          }
+        }
         console.log(`当前页: ${val}`)
-        this.getGoodListData()
+        this.getGoodListData(options)
       }
     }
   }

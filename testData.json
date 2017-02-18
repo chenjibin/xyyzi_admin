@@ -242,6 +242,42 @@
       "recommend": "1",
       "sepcPrice": "0",
       "xianhuo": "0"
+    },{
+      "id": "6012",
+      "image": "http://img2.xyyzi.com/Upload/images/20170119/587f9caac4d2f.jpg?style=200x20",
+      "date": "2017-01-05 11:27:53",
+      "name": "王小虎",
+      "title": "Adidas/阿迪达斯NEO男鞋2016秋季新款透气低帮运动休闲鞋 AW5048 ",
+      "address": "上海市普陀区金沙江路 1518 弄",
+      "cate": "男鞋",
+      "brand": "阿迪达斯",
+      "sex": "男",
+      "price": "684",
+      "isListing":"0",
+      "first": "1",
+      "hot": "0",
+      "new": "0",
+      "recommend": "1",
+      "sepcPrice": "0",
+      "xianhuo": "0"
+    },{
+      "id": "6012",
+      "image": "http://img2.xyyzi.com/Upload/images/20170119/587f9caac4d2f.jpg?style=200x20",
+      "date": "2017-01-05 11:27:53",
+      "name": "王小虎",
+      "title": "Adidas/阿迪达斯NEO男鞋2016秋季新款透气低帮运动休闲鞋 AW5048 ",
+      "address": "上海市普陀区金沙江路 1518 弄",
+      "cate": "男鞋",
+      "brand": "阿迪达斯",
+      "sex": "男",
+      "price": "684",
+      "isListing":"0",
+      "first": "1",
+      "hot": "0",
+      "new": "0",
+      "recommend": "1",
+      "sepcPrice": "0",
+      "xianhuo": "0"
     }],
     "initFormData": {
       "cateData": [{
@@ -385,5 +421,60 @@
         "label": "取消现货"
       }]
     }
+  },
+  "goodCateData": {
+    "tableData": [
+      {
+        "id": 1,
+        "name": "男鞋",
+        "level": 0,
+        "isFirst": 1,
+        "sort": 0,
+        "sort2": 0,
+        "pic1": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "pic2": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "leixing": "鞋"
+      },{
+        "id": 2,
+        "name": "女鞋",
+        "level": 0,
+        "isFirst": 1,
+        "sort": 0,
+        "sort2": 0,
+        "pic1": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "pic2": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "leixing": "鞋"
+      },{
+        "id": 3,
+        "name": "男装",
+        "level": 0,
+        "isFirst": 1,
+        "sort": 0,
+        "sort2": 0,
+        "pic1": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "pic2": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "leixing": "鞋"
+      },{
+        "id": 4,
+        "name": "女装",
+        "level": 0,
+        "isFirst": 1,
+        "sort": 0,
+        "sort2": 0,
+        "pic1": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "pic2": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "leixing": "鞋"
+      },{
+        "id": 5,
+        "name": "包配",
+        "level": 0,
+        "isFirst": 0,
+        "sort": 0,
+        "sort2": 0,
+        "pic1": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "pic2": "http://admin.dev.xyyzi.com/Public/img/cat_img/2.jpg",
+        "leixing": "鞋"
+      }
+    ]
   }
 }
