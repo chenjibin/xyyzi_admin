@@ -27,7 +27,7 @@
       <el-col :span="21" class="right-area">
         <div class="el-tabs el-tabs--border-card">
           <div class="el-tabs__header">
-            <div  class="el-tabs__item" @click="chooseTabItem"  :class="{'is-active':item.page === tabActive}" v-for="(item,index) in tabItems" :data-name="item.page">{{item.name}}<span class="el-icon-close" :data-index="index" v-if="index !== 0" @click="removeTab"></span></div>
+            <div  class="el-tabs__item" @click="chooseTabItem"  :class="{'is-active':item.page === tabActive}" v-for="(item,index) in tabItems" :data-name="item.page" >{{item.name}}<span class="el-icon-close" :data-page="item.page" :data-index="index" v-if="index !== 0" @click="removeTab"></span></div>
           </div>
         </div>
         <div class="router-view-wrapper">
@@ -104,11 +104,33 @@
         each.route = {name: each.page}
     })
     })
+      let localTabItems = JSON.parse(localStorage.getItem('tabItems'))
+      let localTabActive = localStorage.getItem('tabActive')
+      if (localTabItems && localTabActive) {
+        this.tabItems = localTabItems
+        this.tabActive = localTabActive
+        this.$router.push({name: this.tabActive})
+      }
+    },
+    watch: {
+      tabItems(val) {
+        localStorage.setItem('tabItems', JSON.stringify(val))
+      },
+      tabActive(val) {
+        localStorage.setItem('tabActive', val)
+      }
     },
     methods: {
       removeTab(tab) {
         tab.stopPropagation()
         let index = +tab.target.dataset.index
+        let page = tab.target.dataset.page
+        if (page === this.tabActive) {
+          let preIndex = index - 1
+          let preName = this.tabItems[preIndex].page
+          this.tabActive = preName
+          this.$router.push({name: preName})
+        }
         this.tabItems.splice(index, 1)
       },
       chooseTabItem(tab) {

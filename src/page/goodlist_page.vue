@@ -75,6 +75,9 @@
             fixed
             type="selection"
             width="40">
+            <template scope="scope">
+
+            </template>
           </el-table-column>
           <el-table-column
             fixed

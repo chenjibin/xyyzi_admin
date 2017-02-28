@@ -13,8 +13,11 @@ import GoodBrand from 'src/page/goodbrand_page'
 import CommentManage from 'src/page/commentmanage_page'
 import GoodActivity from 'src/page/goodactivity_page'
 import ReturnList from 'src/page/returnlist_page'
+// import TradeList from 'src/page/tradeList_page'
 
 Vue.use(Router)
+let tabActive = localStorage.getItem('tabActive')
+let defaultRoot = tabActive || 'home'
 
 export default new Router({
   routes: [
@@ -32,7 +35,7 @@ export default new Router({
     {
       path: '/main',
       name: 'main',
-      redirect: '/main/home',
+      redirect: '/main/' + defaultRoot,
       component: Main,
       children: [
         {
@@ -87,6 +90,11 @@ export default new Router({
           name: 'returnList',
           component: ReturnList
         }
+        // {
+        //   path: 'tradeList',
+        //   name: 'tradeList',
+        //   component: TradeList
+        // }
       ]
     }
   ]

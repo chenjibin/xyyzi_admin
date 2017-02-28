@@ -34,6 +34,15 @@
       ]
     },
     {
+      "name": "交易管理",
+      "itemMenu": [
+        {
+          "name": "交易列表",
+          "page": "tradeList"
+        }
+      ]
+    },
+    {
       "name": "退款管理",
       "itemMenu": [
         {

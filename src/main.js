@@ -77,10 +77,10 @@ axios.interceptors.request.use(function (config) {
   // Do something before request is sent
   // config.withCredentials = true  // 需要跨域打开此配置
   // post提交 data存在 并且 data不是FormData对象时对数据进行json化处理
-  // if(config.method==='post' && config.data && config.data.constructor !== FormData){
-  //   config.data = qs.stringify(config.data)
-  //   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-  // }
+  if (config.method === 'post' && config.data && config.data.constructor !== FormData) {
+    config.data = qs.stringify(config.data)
+    config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+  }
   return config
 }, function (error) {
   // Do something with request error
